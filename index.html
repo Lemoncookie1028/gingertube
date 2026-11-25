@@ -1,1 +1,478 @@
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+	<title>Ginger User - GingerSpace</title>
+	
+	<style>
+		:root {
+			--ginger-primary: #FF4500;
+			--ginger-secondary: #FF8C00;
+			--ginger-dark: #8B0000;
+			--ginger-light: #FFE4C4;
+		}
+		
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: Arial, sans-serif;
+		}
+		
+		body {
+			background: #f0f0f0;
+			color: #333;
+		}
+		
+		.profile-container {
+			max-width: 1000px;
+			margin: 0 auto;
+			background: white;
+			border: 2px solid var(--ginger-primary);
+			margin-top: 10px;
+		}
+		
+		/* Classic MySpace Profile Header */
+		.profile-header {
+			background: linear-gradient(135deg, var(--ginger-primary), var(--ginger-secondary));
+			padding: 20px;
+			color: white;
+			position: relative;
+		}
+		
+		.profile-stats {
+			background: var(--ginger-dark);
+			padding: 10px;
+			color: white;
+			font-size: 12px;
+			text-align: center;
+		}
+		
+		/* Main Profile Layout */
+		.profile-main {
+			display: table;
+			width: 100%;
+		}
+		
+		.profile-left {
+			display: table-cell;
+			width: 200px;
+			vertical-align: top;
+			background: #f9f9f9;
+			border-right: 1px solid #ddd;
+			padding: 15px;
+		}
+		
+		.profile-content {
+			display: table-cell;
+			vertical-align: top;
+			padding: 15px;
+		}
+		
+		/* Profile Sections */
+		.profile-section {
+			margin-bottom: 20px;
+			border: 1px solid #ddd;
+			background: white;
+		}
+		
+		.section-header {
+			background: linear-gradient(135deg, var(--ginger-primary), var(--ginger-secondary));
+			color: white;
+			padding: 8px 12px;
+			font-weight: bold;
+			font-size: 14px;
+		}
+		
+		.section-content {
+			padding: 15px;
+		}
+		
+		/* Friends Section - Classic Top 8 */
+		.friends-grid {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 10px;
+			margin-top: 10px;
+		}
+		
+		.friend-card {
+			text-align: center;
+			border: 1px solid #ddd;
+			padding: 8px;
+			background: white;
+		}
+		
+		.friend-card img {
+			width: 50px;
+			height: 50px;
+			border-radius: 5px;
+			border: 2px solid var(--ginger-primary);
+		}
+		
+		/* Contact Table */
+		.contact-table {
+			width: 100%;
+			border-collapse: collapse;
+			font-size: 12px;
+		}
+		
+		.contact-table td {
+			padding: 4px 8px;
+			border-bottom: 1px solid #eee;
+		}
+		
+		/* Blog Entries */
+		.blog-entry {
+			border-bottom: 1px solid #eee;
+			padding: 10px 0;
+			margin-bottom: 10px;
+		}
+		
+		.blog-date {
+			color: #666;
+			font-size: 11px;
+		}
+		
+		/* Comments Section */
+		.comment {
+			border: 1px solid #ddd;
+			margin-bottom: 10px;
+			background: #f9f9f9;
+		}
+		
+		.comment-header {
+			background: #e9e9e9;
+			padding: 5px 10px;
+			font-size: 11px;
+			border-bottom: 1px solid #ddd;
+		}
+		
+		.comment-body {
+			padding: 10px;
+		}
+		
+		/* Classic MySpace Navigation */
+		.profile-nav {
+			background: var(--ginger-dark);
+			padding: 8px;
+			text-align: center;
+		}
+		
+		.profile-nav a {
+			color: white;
+			text-decoration: none;
+			padding: 5px 10px;
+			margin: 0 5px;
+			font-size: 12px;
+		}
+		
+		.profile-nav a:hover {
+			text-decoration: underline;
+		}
+	</style>
+	
+	<script>
+		// Profile customization - classic MySpace feature
+		function customizeProfile() {
+			const bgColor = prompt('Enter background color (hex or name):', '#ffffff');
+			const textColor = prompt('Enter text color:', '#000000');
+			const linkColor = prompt('Enter link color:', '#FF4500');
+			
+			if (bgColor) document.body.style.backgroundColor = bgColor;
+			if (textColor) document.body.style.color = textColor;
+			if (linkColor) {
+				const links = document.querySelectorAll('a');
+				links.forEach(link => link.style.color = linkColor);
+			}
+			
+			alert('Profile customized! (Classic MySpace style!)');
+		}
+		
+		// Add friend function
+		function addFriend(userId) {
+			if(confirm('Add this user to your friends?')) {
+				alert('Friend request sent!');
+				// In real implementation, this would call an API
+			}
+		}
+		
+		// Send message function
+		function sendMessage() {
+			const subject = prompt('Message subject:');
+			if(subject) {
+				alert(`Message "${subject}" sent!`);
+			}
+		}
+		
+		// Post comment function
+		function postComment() {
+			const comment = prompt('Enter your comment:');
+			if(comment && comment.trim() !== '') {
+				const commentsSection = document.getElementById('comments-section');
+				const newComment = document.createElement('div');
+				newComment.className = 'comment';
+				newComment.innerHTML = `
+					<div class="comment-header">
+						<strong>You</strong> - Just now
+					</div>
+					<div class="comment-body">
+						${comment}
+					</div>
+				`;
+				commentsSection.insertBefore(newComment, commentsSection.firstChild);
+				alert('Comment posted!');
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="profile-container">
+		<!-- Profile Header -->
+		<div class="profile-header">
+			<table width="100%">
+				<tr>
+					<td width="80">
+						<img src="/images/default_user.jpg" width="70" height="70" style="border-radius: 5px; border: 2px solid white;" alt="Profile Pic"/>
+					</td>
+					<td>
+						<h1 style="margin: 0; font-size: 24px;">GingerUser123</h1>
+						<p style="margin: 5px 0; opacity: 0.9;">"Living the ginger life! 🔥"</p>
+						<div style="margin-top: 10px;">
+							<button onclick="addFriend(1)" style="background: white; color: #FF4500; border: none; padding: 5px 10px; border-radius: 3px; margin-right: 5px; cursor: pointer;">
+								Add as Friend
+							</button>
+							<button onclick="sendMessage()" style="background: white; color: #FF4500; border: none; padding: 5px 10px; border-radius: 3px; margin-right: 5px; cursor: pointer;">
+								Send Message
+							</button>
+							<button onclick="customizeProfile()" style="background: white; color: #FF4500; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">
+								Customize Profile
+							</button>
+						</div>
+					</td>
+					<td width="100" align="right">
+						<div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 5px;">
+							<div style="font-size: 12px;">Profile Views</div>
+							<div style="font-size: 18px; font-weight: bold;">1,247</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<!-- Profile Stats -->
+		<div class="profile-stats">
+			Last Login: Today | Friends: 228 | Posts: 47 | Comments: 89
+		</div>
+		
+		<!-- Profile Navigation -->
+		<div class="profile-nav">
+			<a href="#about">About Me</a> | 
+			<a href="#friends">Friends</a> | 
+			<a href="#photos">Photos</a> | 
+			<a href="#blog">Blog</a> | 
+			<a href="#comments">Comments</a> | 
+			<a href="#music">Music</a>
+		</div>
+		
+		<!-- Main Profile Content -->
+		<div class="profile-main">
+			<!-- Left Sidebar -->
+			<div class="profile-left">
+				<!-- Basic Info -->
+				<div class="profile-section">
+					<div class="section-header">Basic Info</div>
+					<div class="section-content">
+						<table class="contact-table">
+							<tr><td><strong>Age:</strong></td><td>25</td></tr>
+							<tr><td><strong>Location:</strong></td><td>Ginger Ville, GS</td></tr>
+							<tr><td><strong>Gender:</strong></td><td>Male</td></tr>
+							<tr><td><strong>Status:</strong></td><td>Single</td></tr>
+							<tr><td><strong>Joined:</strong></td><td>Jan 15, 2024</td></tr>
+						</table>
+					</div>
+				</div>
+				
+				<!-- Contact Info -->
+				<div class="profile-section">
+					<div class="section-header">Contacting Me</div>
+					<div class="section-content">
+						<table class="contact-table">
+							<tr><td><strong>Messaging:</strong></td><td>Always</td></tr>
+							<tr><td><strong>Email:</strong></td><td>Only Friends</td></tr>
+							<tr><td><strong>IM:</strong></td><td>gingeruser123</td></tr>
+							<tr><td><strong>Phone:</strong></td><td>Not Shared</td></tr>
+						</table>
+					</div>
+				</div>
+				
+				<!-- Interests -->
+				<div class="profile-section">
+					<div class="section-header">Interests</div>
+					<div class="section-content">
+						<strong>Music:</strong> Rock, Alternative, Indie<br/>
+						<strong>Movies:</strong> Comedy, Action, Sci-Fi<br/>
+						<strong>TV Shows:</strong> The Office, Friends<br/>
+						<strong>Books:</strong> Fiction, Tech, Fantasy<br/>
+						<strong>Hobbies:</strong> Gaming, Coding, Music
+					</div>
+				</div>
+			</div>
+			
+			<!-- Main Content Area -->
+			<div class="profile-content">
+				<!-- About Me Section -->
+				<div class="profile-section" id="about">
+					<div class="section-header">About Me</div>
+					<div class="section-content">
+						<p>Hey there! Welcome to my GingerSpace profile! 🍊</p>
+						<p>I'm a passionate developer who loves creating awesome stuff. When I'm not coding, you can find me gaming, listening to music, or exploring new tech.</p>
+						<p><strong>Current Mood:</strong> 😎 Chill</p>
+						<p><strong>Currently Listening:</strong> "Ginger Rock Anthem"</p>
+						<p><strong>Currently Playing:</strong> Cyberpunk 2077</p>
+					</div>
+				</div>
+				
+				<!-- Friends Section - Top 8 -->
+				<div class="profile-section" id="friends">
+					<div class="section-header">Friends (Top 8)</div>
+					<div class="section-content">
+						<p><em>These are my closest friends on GingerSpace!</em></p>
+						<div class="friends-grid">
+							<!-- Friend 1 -->
+							<div class="friend-card">
+								<img src="/images/default_user.jpg" alt="Friend 1"/>
+								<div>SpiceLover</div>
+							</div>
+							<!-- Friend 2 -->
+							<div class="friend-card">
+								<img src="/images/default_user.jpg" alt="Friend 2"/>
+								<div>RedHeadFan</div>
+							</div>
+							<!-- Friend 3 -->
+							<div class="friend-card">
+								<img src="/images/default_user.jpg" alt="Friend 3"/>
+								<div>GingerBoss</div>
+							</div>
+							<!-- Friend 4 -->
+							<div class="friend-card">
+								<img src="/images/default_user.jpg" alt="Friend 4"/>
+								<div>CodeMaster</div>
+							</div>
+							<!-- Friend 5 -->
+							<div class="friend-card">
+								<img src="/images/default_user.jpg" alt="Friend 5"/>
+								<div>MusicGuru</div>
+							</div>
+							<!-- Friend 6 -->
+							<div class="friend-card">
+								<img src="/images/default_user.jpg" alt="Friend 6"/>
+								<div>GameChanger</div>
+							</div>
+							<!-- Friend 7 -->
+							<div class="friend-card">
+								<img src="/images/default_user.jpg" alt="Friend 7"/>
+								<div>TechWizard</div>
+							</div>
+							<!-- Friend 8 -->
+							<div class="friend-card">
+								<img src="/images/default_user.jpg" alt="Friend 8"/>
+								<div>ArtisticSoul</div>
+							</div>
+						</div>
+						<div style="text-align: center; margin-top: 10px;">
+							<a href="#" style="color: #FF4500;">View All Friends (228)</a>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Blog Section -->
+				<div class="profile-section" id="blog">
+					<div class="section-header">Latest Blog Entries</div>
+					<div class="section-content">
+						<div class="blog-entry">
+							<h4>My First Week on GingerSpace! 🎉</h4>
+							<div class="blog-date">Posted: January 20, 2024</div>
+							<p>Wow, what an amazing first week! Met so many cool people and already have 200+ friends. This platform is incredible!</p>
+							<a href="#" style="color: #FF4500;">Read More →</a>
+						</div>
+						
+						<div class="blog-entry">
+							<h4>Why GingerSpace is the Future</h4>
+							<div class="blog-date">Posted: January 18, 2024</div>
+							<p>Just thinking about how social media should be... and GingerSpace gets it right! Customization, music, real connections...</p>
+							<a href="#" style="color: #FF4500;">Read More →</a>
+						</div>
+						
+						<div style="text-align: center; margin-top: 10px;">
+							<a href="#" style="color: #FF4500;">View All Blog Posts (12)</a>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Comments Section -->
+				<div class="profile-section" id="comments">
+					<div class="section-header">Comments (4)</div>
+					<div class="section-content" id="comments-section">
+						<!-- Comment 1 -->
+						<div class="comment">
+							<div class="comment-header">
+								<strong>SpiceLover</strong> - January 19, 2024
+							</div>
+							<div class="comment-body">
+								Hey man, love your profile! The customization is awesome! 🔥
+							</div>
+						</div>
+						
+						<!-- Comment 2 -->
+						<div class="comment">
+							<div class="comment-header">
+								<strong>RedHeadFan</strong> - January 18, 2024
+							</div>
+							<div class="comment-body">
+								Welcome to GingerSpace! Added you as a friend 😊
+							</div>
+						</div>
+						
+						<!-- Comment 3 -->
+						<div class="comment">
+							<div class="comment-header">
+								<strong>GingerBoss</strong> - January 17, 2024
+							</div>
+							<div class="comment-body">
+								Cool blog posts! Keep them coming!
+							</div>
+						</div>
+						
+						<!-- Comment 4 -->
+						<div class="comment">
+							<div class="comment-header">
+								<strong>CodeMaster</strong> - January 16, 2024
+							</div>
+							<div class="comment-body">
+								Nice to see another developer here! Let's connect!
+							</div>
+						</div>
+						
+						<!-- Add Comment Button -->
+						<div style="text-align: center; margin-top: 15px;">
+							<button onclick="postComment()" style="background: #FF4500; color: white; border: none; padding: 8px 15px; border-radius: 3px; cursor: pointer;">
+								Add Comment
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Footer Navigation -->
+	<div style="text-align: center; margin: 20px; font-size: 12px;">
+		<a href="/index.cfm">Home</a> | 
+		<a href="/browse.cfm">Browse</a> | 
+		<a href="/search.cfm">Search</a> | 
+		<a href="/editprofile.cfm">Edit Profile</a> | 
+		<a href="/logout.cfm">Logout</a>
+	</div>
+</body>
+</html>
