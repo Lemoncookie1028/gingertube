@@ -1,478 +1,534 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
+<!doctype html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
-	<title>Ginger User - GingerSpace</title>
-	
-	<style>
-		:root {
-			--ginger-primary: #FF4500;
-			--ginger-secondary: #FF8C00;
-			--ginger-dark: #8B0000;
-			--ginger-light: #FFE4C4;
-		}
-		
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-			font-family: Arial, sans-serif;
-		}
-		
-		body {
-			background: #f0f0f0;
-			color: #333;
-		}
-		
-		.profile-container {
-			max-width: 1000px;
-			margin: 0 auto;
-			background: white;
-			border: 2px solid var(--ginger-primary);
-			margin-top: 10px;
-		}
-		
-		/* Classic MySpace Profile Header */
-		.profile-header {
-			background: linear-gradient(135deg, var(--ginger-primary), var(--ginger-secondary));
-			padding: 20px;
-			color: white;
-			position: relative;
-		}
-		
-		.profile-stats {
-			background: var(--ginger-dark);
-			padding: 10px;
-			color: white;
-			font-size: 12px;
-			text-align: center;
-		}
-		
-		/* Main Profile Layout */
-		.profile-main {
-			display: table;
-			width: 100%;
-		}
-		
-		.profile-left {
-			display: table-cell;
-			width: 200px;
-			vertical-align: top;
-			background: #f9f9f9;
-			border-right: 1px solid #ddd;
-			padding: 15px;
-		}
-		
-		.profile-content {
-			display: table-cell;
-			vertical-align: top;
-			padding: 15px;
-		}
-		
-		/* Profile Sections */
-		.profile-section {
-			margin-bottom: 20px;
-			border: 1px solid #ddd;
-			background: white;
-		}
-		
-		.section-header {
-			background: linear-gradient(135deg, var(--ginger-primary), var(--ginger-secondary));
-			color: white;
-			padding: 8px 12px;
-			font-weight: bold;
-			font-size: 14px;
-		}
-		
-		.section-content {
-			padding: 15px;
-		}
-		
-		/* Friends Section - Classic Top 8 */
-		.friends-grid {
-			display: grid;
-			grid-template-columns: repeat(4, 1fr);
-			gap: 10px;
-			margin-top: 10px;
-		}
-		
-		.friend-card {
-			text-align: center;
-			border: 1px solid #ddd;
-			padding: 8px;
-			background: white;
-		}
-		
-		.friend-card img {
-			width: 50px;
-			height: 50px;
-			border-radius: 5px;
-			border: 2px solid var(--ginger-primary);
-		}
-		
-		/* Contact Table */
-		.contact-table {
-			width: 100%;
-			border-collapse: collapse;
-			font-size: 12px;
-		}
-		
-		.contact-table td {
-			padding: 4px 8px;
-			border-bottom: 1px solid #eee;
-		}
-		
-		/* Blog Entries */
-		.blog-entry {
-			border-bottom: 1px solid #eee;
-			padding: 10px 0;
-			margin-bottom: 10px;
-		}
-		
-		.blog-date {
-			color: #666;
-			font-size: 11px;
-		}
-		
-		/* Comments Section */
-		.comment {
-			border: 1px solid #ddd;
-			margin-bottom: 10px;
-			background: #f9f9f9;
-		}
-		
-		.comment-header {
-			background: #e9e9e9;
-			padding: 5px 10px;
-			font-size: 11px;
-			border-bottom: 1px solid #ddd;
-		}
-		
-		.comment-body {
-			padding: 10px;
-		}
-		
-		/* Classic MySpace Navigation */
-		.profile-nav {
-			background: var(--ginger-dark);
-			padding: 8px;
-			text-align: center;
-		}
-		
-		.profile-nav a {
-			color: white;
-			text-decoration: none;
-			padding: 5px 10px;
-			margin: 0 5px;
-			font-size: 12px;
-		}
-		
-		.profile-nav a:hover {
-			text-decoration: underline;
-		}
-	</style>
-	
-	<script>
-		// Profile customization - classic MySpace feature
-		function customizeProfile() {
-			const bgColor = prompt('Enter background color (hex or name):', '#ffffff');
-			const textColor = prompt('Enter text color:', '#000000');
-			const linkColor = prompt('Enter link color:', '#FF4500');
-			
-			if (bgColor) document.body.style.backgroundColor = bgColor;
-			if (textColor) document.body.style.color = textColor;
-			if (linkColor) {
-				const links = document.querySelectorAll('a');
-				links.forEach(link => link.style.color = linkColor);
-			}
-			
-			alert('Profile customized! (Classic MySpace style!)');
-		}
-		
-		// Add friend function
-		function addFriend(userId) {
-			if(confirm('Add this user to your friends?')) {
-				alert('Friend request sent!');
-				// In real implementation, this would call an API
-			}
-		}
-		
-		// Send message function
-		function sendMessage() {
-			const subject = prompt('Message subject:');
-			if(subject) {
-				alert(`Message "${subject}" sent!`);
-			}
-		}
-		
-		// Post comment function
-		function postComment() {
-			const comment = prompt('Enter your comment:');
-			if(comment && comment.trim() !== '') {
-				const commentsSection = document.getElementById('comments-section');
-				const newComment = document.createElement('div');
-				newComment.className = 'comment';
-				newComment.innerHTML = `
-					<div class="comment-header">
-						<strong>You</strong> - Just now
-					</div>
-					<div class="comment-body">
-						${comment}
-					</div>
-				`;
-				commentsSection.insertBefore(newComment, commentsSection.firstChild);
-				alert('Comment posted!');
-			}
-		}
-	</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>GingerTube — Local Watch Later & Playlists (Halloween)</title>
+
+<!-- Google Identity Services (profile-only sign-in) -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<!-- jwt-decode for decoding credential token to get profile (name/picture) -->
+<script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+<style>
+/* --- Halloween theme + watermark applied --- */
+:root {
+  --bg:#07111b;
+  --card:#071026;
+  --accent:#ff784f;
+  --accent-2:#ffb36b;
+  --muted:#9aa8b8;
+  --text:#f1f8ff;
+}
+
+/* global */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  color:var(--text);
+  background: linear-gradient(180deg,#05060a 0%, #07111b 60%);
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* subtle repeating diagonal GingerTube watermark */
+body::before{
+  content: "GingerTube GingerTube GingerTube GingerTube GingerTube ";
+  position: fixed;
+  top: -20%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  z-index: 0;
+  font-size: 5rem;
+  font-weight: 800;
+  color: rgba(255,120,79,0.04); /* very faint orange */
+  transform: rotate(-30deg);
+  white-space: nowrap;
+  line-height: 1.2;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: overlay;
+}
+
+/* header */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 20px;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  position:relative;
+  z-index: 5; /* above watermark */
+}
+.brand{display:flex;align-items:center;gap:12px;}
+.logo{
+  width:120px;height:48px;
+  background: linear-gradient(135deg,#ffb397,#ff6b4a);
+  display:flex;align-items:center;justify-content:center;border-radius:8px;
+  font-weight:700;color:#081022;box-shadow:0 6px 24px rgba(255,100,50,0.08);
+}
+.controls{display:flex;gap:8px;align-items:center;flex:1;justify-content:center;z-index:5;}
+.search{
+  padding:8px 12px;border-radius:10px;border:0;background:rgba(255,255,255,0.03);
+  color:var(--muted);min-width:260px;
+  outline: none;
+}
+.search::placeholder{ color: rgba(155,170,185,0.6); }
+.btn{
+  background: linear-gradient(135deg,var(--accent),var(--accent-2));
+  border:none;padding:8px 12px;border-radius:10px;color:#081022;font-weight:700;cursor:pointer;
+  box-shadow: 0 8px 30px rgba(255,110,60,0.12);
+}
+.btn:active{ transform: translateY(1px); }
+.menu{display:flex;gap:10px;align-items:center;z-index:5;}
+.menu-item{
+  color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;
+}
+.menu-item:hover{ color:var(--accent); background: rgba(255,110,60,0.06); }
+
+/* main layout */
+main{padding:20px;position:relative;z-index:5;}
+.section-title{font-size:1.1rem;margin:6px 0 14px;color:#fff;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;align-items:start;}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
+  border-radius:12px;padding:10px;border:1px solid rgba(255,255,255,0.03);overflow:hidden;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.6);
+}
+.thumb{position:relative;padding-top:56.25%;background:#000;border-radius:8px;overflow:hidden;}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.meta{display:flex;align-items:center;gap:10px;margin-top:10px;}
+.title{font-size:0.95rem;margin:0;color:#fff;flex:1;}
+.subtitle{font-size:0.85rem;color:var(--muted);margin:0;}
+
+/* action buttons in cards */
+.play, .watchLaterBtn, .playlistBtn, .removeBtn, .removeFromPlaylistBtn {
+  background:transparent;border:1px solid rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;color:var(--muted);cursor:pointer;margin-left:6px;
+}
+.play:hover, .watchLaterBtn:hover, .playlistBtn:hover, .removeBtn:hover, .removeFromPlaylistBtn:hover {
+  color:var(--accent); border-color:var(--accent);
+}
+
+/* modal player */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;z-index:60;}
+.modal.open{display:flex;}
+.player{width:min(1100px,96%);background:linear-gradient(180deg,#071026,#04101a);border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 30px 80px rgba(0,0,0,0.7);}
+.player-header{display:flex;align-items:center;gap:12px;color:var(--text);font-weight:700;}
+.close{margin-left:auto;background:transparent;border:0;color:var(--muted);cursor:pointer;font-size:18px;}
+iframe{width:100%;height:520px;border-radius:8px;border:0;background:#000;}
+
+/* footer */
+.footer{padding:14px 20px;color:var(--muted);font-size:0.9rem;text-align:center;margin-top:20px;position:relative;z-index:5;}
+
+/* user info */
+#userInfo{display:none;align-items:center;gap:8px;}
+#userInfo img{width:36px;height:36px;border-radius:50%;}
+.small-muted{color:var(--muted);font-size:0.9rem;}
+
+/* responsive */
+@media(max-width:700px){
+  iframe{height:300px;}
+  .controls{flex-direction:column;gap:10px;}
+  .logo{width:96px;height:40px;font-size:13px;}
+  body::before { font-size: 3.2rem; } /* smaller watermark on mobile */
+}
+</style>
 </head>
 <body>
-	<div class="profile-container">
-		<!-- Profile Header -->
-		<div class="profile-header">
-			<table width="100%">
-				<tr>
-					<td width="80">
-						<img src="/images/default_user.jpg" width="70" height="70" style="border-radius: 5px; border: 2px solid white;" alt="Profile Pic"/>
-					</td>
-					<td>
-						<h1 style="margin: 0; font-size: 24px;">GingerUser123</h1>
-						<p style="margin: 5px 0; opacity: 0.9;">"Living the ginger life! 🔥"</p>
-						<div style="margin-top: 10px;">
-							<button onclick="addFriend(1)" style="background: white; color: #FF4500; border: none; padding: 5px 10px; border-radius: 3px; margin-right: 5px; cursor: pointer;">
-								Add as Friend
-							</button>
-							<button onclick="sendMessage()" style="background: white; color: #FF4500; border: none; padding: 5px 10px; border-radius: 3px; margin-right: 5px; cursor: pointer;">
-								Send Message
-							</button>
-							<button onclick="customizeProfile()" style="background: white; color: #FF4500; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">
-								Customize Profile
-							</button>
-						</div>
-					</td>
-					<td width="100" align="right">
-						<div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 5px;">
-							<div style="font-size: 12px;">Profile Views</div>
-							<div style="font-size: 18px; font-weight: bold;">1,247</div>
-						</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-		
-		<!-- Profile Stats -->
-		<div class="profile-stats">
-			Last Login: Today | Friends: 228 | Posts: 47 | Comments: 89
-		</div>
-		
-		<!-- Profile Navigation -->
-		<div class="profile-nav">
-			<a href="#about">About Me</a> | 
-			<a href="#friends">Friends</a> | 
-			<a href="#photos">Photos</a> | 
-			<a href="#blog">Blog</a> | 
-			<a href="#comments">Comments</a> | 
-			<a href="#music">Music</a>
-		</div>
-		
-		<!-- Main Profile Content -->
-		<div class="profile-main">
-			<!-- Left Sidebar -->
-			<div class="profile-left">
-				<!-- Basic Info -->
-				<div class="profile-section">
-					<div class="section-header">Basic Info</div>
-					<div class="section-content">
-						<table class="contact-table">
-							<tr><td><strong>Age:</strong></td><td>25</td></tr>
-							<tr><td><strong>Location:</strong></td><td>Ginger Ville, GS</td></tr>
-							<tr><td><strong>Gender:</strong></td><td>Male</td></tr>
-							<tr><td><strong>Status:</strong></td><td>Single</td></tr>
-							<tr><td><strong>Joined:</strong></td><td>Jan 15, 2024</td></tr>
-						</table>
-					</div>
-				</div>
-				
-				<!-- Contact Info -->
-				<div class="profile-section">
-					<div class="section-header">Contacting Me</div>
-					<div class="section-content">
-						<table class="contact-table">
-							<tr><td><strong>Messaging:</strong></td><td>Always</td></tr>
-							<tr><td><strong>Email:</strong></td><td>Only Friends</td></tr>
-							<tr><td><strong>IM:</strong></td><td>gingeruser123</td></tr>
-							<tr><td><strong>Phone:</strong></td><td>Not Shared</td></tr>
-						</table>
-					</div>
-				</div>
-				
-				<!-- Interests -->
-				<div class="profile-section">
-					<div class="section-header">Interests</div>
-					<div class="section-content">
-						<strong>Music:</strong> Rock, Alternative, Indie<br/>
-						<strong>Movies:</strong> Comedy, Action, Sci-Fi<br/>
-						<strong>TV Shows:</strong> The Office, Friends<br/>
-						<strong>Books:</strong> Fiction, Tech, Fantasy<br/>
-						<strong>Hobbies:</strong> Gaming, Coding, Music
-					</div>
-				</div>
-			</div>
-			
-			<!-- Main Content Area -->
-			<div class="profile-content">
-				<!-- About Me Section -->
-				<div class="profile-section" id="about">
-					<div class="section-header">About Me</div>
-					<div class="section-content">
-						<p>Hey there! Welcome to my GingerSpace profile! 🍊</p>
-						<p>I'm a passionate developer who loves creating awesome stuff. When I'm not coding, you can find me gaming, listening to music, or exploring new tech.</p>
-						<p><strong>Current Mood:</strong> 😎 Chill</p>
-						<p><strong>Currently Listening:</strong> "Ginger Rock Anthem"</p>
-						<p><strong>Currently Playing:</strong> Cyberpunk 2077</p>
-					</div>
-				</div>
-				
-				<!-- Friends Section - Top 8 -->
-				<div class="profile-section" id="friends">
-					<div class="section-header">Friends (Top 8)</div>
-					<div class="section-content">
-						<p><em>These are my closest friends on GingerSpace!</em></p>
-						<div class="friends-grid">
-							<!-- Friend 1 -->
-							<div class="friend-card">
-								<img src="/images/default_user.jpg" alt="Friend 1"/>
-								<div>SpiceLover</div>
-							</div>
-							<!-- Friend 2 -->
-							<div class="friend-card">
-								<img src="/images/default_user.jpg" alt="Friend 2"/>
-								<div>RedHeadFan</div>
-							</div>
-							<!-- Friend 3 -->
-							<div class="friend-card">
-								<img src="/images/default_user.jpg" alt="Friend 3"/>
-								<div>GingerBoss</div>
-							</div>
-							<!-- Friend 4 -->
-							<div class="friend-card">
-								<img src="/images/default_user.jpg" alt="Friend 4"/>
-								<div>CodeMaster</div>
-							</div>
-							<!-- Friend 5 -->
-							<div class="friend-card">
-								<img src="/images/default_user.jpg" alt="Friend 5"/>
-								<div>MusicGuru</div>
-							</div>
-							<!-- Friend 6 -->
-							<div class="friend-card">
-								<img src="/images/default_user.jpg" alt="Friend 6"/>
-								<div>GameChanger</div>
-							</div>
-							<!-- Friend 7 -->
-							<div class="friend-card">
-								<img src="/images/default_user.jpg" alt="Friend 7"/>
-								<div>TechWizard</div>
-							</div>
-							<!-- Friend 8 -->
-							<div class="friend-card">
-								<img src="/images/default_user.jpg" alt="Friend 8"/>
-								<div>ArtisticSoul</div>
-							</div>
-						</div>
-						<div style="text-align: center; margin-top: 10px;">
-							<a href="#" style="color: #FF4500;">View All Friends (228)</a>
-						</div>
-					</div>
-				</div>
-				
-				<!-- Blog Section -->
-				<div class="profile-section" id="blog">
-					<div class="section-header">Latest Blog Entries</div>
-					<div class="section-content">
-						<div class="blog-entry">
-							<h4>My First Week on GingerSpace! 🎉</h4>
-							<div class="blog-date">Posted: January 20, 2024</div>
-							<p>Wow, what an amazing first week! Met so many cool people and already have 200+ friends. This platform is incredible!</p>
-							<a href="#" style="color: #FF4500;">Read More →</a>
-						</div>
-						
-						<div class="blog-entry">
-							<h4>Why GingerSpace is the Future</h4>
-							<div class="blog-date">Posted: January 18, 2024</div>
-							<p>Just thinking about how social media should be... and GingerSpace gets it right! Customization, music, real connections...</p>
-							<a href="#" style="color: #FF4500;">Read More →</a>
-						</div>
-						
-						<div style="text-align: center; margin-top: 10px;">
-							<a href="#" style="color: #FF4500;">View All Blog Posts (12)</a>
-						</div>
-					</div>
-				</div>
-				
-				<!-- Comments Section -->
-				<div class="profile-section" id="comments">
-					<div class="section-header">Comments (4)</div>
-					<div class="section-content" id="comments-section">
-						<!-- Comment 1 -->
-						<div class="comment">
-							<div class="comment-header">
-								<strong>SpiceLover</strong> - January 19, 2024
-							</div>
-							<div class="comment-body">
-								Hey man, love your profile! The customization is awesome! 🔥
-							</div>
-						</div>
-						
-						<!-- Comment 2 -->
-						<div class="comment">
-							<div class="comment-header">
-								<strong>RedHeadFan</strong> - January 18, 2024
-							</div>
-							<div class="comment-body">
-								Welcome to GingerSpace! Added you as a friend 😊
-							</div>
-						</div>
-						
-						<!-- Comment 3 -->
-						<div class="comment">
-							<div class="comment-header">
-								<strong>GingerBoss</strong> - January 17, 2024
-							</div>
-							<div class="comment-body">
-								Cool blog posts! Keep them coming!
-							</div>
-						</div>
-						
-						<!-- Comment 4 -->
-						<div class="comment">
-							<div class="comment-header">
-								<strong>CodeMaster</strong> - January 16, 2024
-							</div>
-							<div class="comment-body">
-								Nice to see another developer here! Let's connect!
-							</div>
-						</div>
-						
-						<!-- Add Comment Button -->
-						<div style="text-align: center; margin-top: 15px;">
-							<button onclick="postComment()" style="background: #FF4500; color: white; border: none; padding: 8px 15px; border-radius: 3px; cursor: pointer;">
-								Add Comment
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<!-- Footer Navigation -->
-	<div style="text-align: center; margin: 20px; font-size: 12px;">
-		<a href="/index.cfm">Home</a> | 
-		<a href="/browse.cfm">Browse</a> | 
-		<a href="/search.cfm">Search</a> | 
-		<a href="/editprofile.cfm">Edit Profile</a> | 
-		<a href="/logout.cfm">Logout</a>
-	</div>
+
+<header>
+  <div class="brand">
+    <div class="logo">GT</div>
+    <div style="display:flex;flex-direction:column;">
+      <div style="font-weight:700;color:#fff;">GingerTube</div>
+      <div class="small-muted">Search • Watch • Save (local)</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <input id="globalSearch" class="search" placeholder="Search YouTube videos..." />
+    <button id="searchBtn" class="btn">Search</button>
+
+    <!-- GSI button container -->
+    <div id="gsiButtonContainer" style="margin-left:8px;"></div>
+
+    <!-- user info -->
+    <div id="userInfo">
+      <img id="userPic" src="" alt="user">
+      <span id="userName" style="color:#fff;"></span>
+      <button id="signOutBtn" class="btn" style="margin-left:8px;">Sign Out</button>
+    </div>
+  </div>
+
+  <nav class="menu">
+    <a href="#" class="menu-item" id="homeLink">Home</a>
+    <a href="#trending" class="menu-item" id="trendingLink">Trending</a>
+    <a href="#watchlater" class="menu-item" id="watchLaterLink">Watch Later</a>
+    <a href="#playlists" class="menu-item" id="playlistsLink">Playlists</a>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <h3 class="section-title">Trending Now</h3>
+    <div class="grid" id="trendingGrid"></div>
+  </section>
+
+  <section>
+    <h3 class="section-title">Search Results</h3>
+    <div class="grid" id="searchGrid"></div>
+  </section>
+
+  <section>
+    <h3 class="section-title">Watch Later</h3>
+    <div class="grid" id="watchLaterGrid"></div>
+  </section>
+
+  <section>
+    <h3 class="section-title">Playlists</h3>
+    <div class="grid" id="playlistsGrid"></div>
+  </section>
+</main>
+
+<div class="modal" id="modal">
+  <div class="player">
+    <div class="player-header">
+      <div id="playerTitle" style="color:#fff;"></div>
+      <button class="close" id="closeModal">✕</button>
+    </div>
+    <iframe id="playerFrame" src="" allowfullscreen allow="autoplay"></iframe>
+  </div>
+</div>
+
+<div class="footer">GingerTube — Local Watch Later & Playlists</div>
+
+<script>
+/*
+  Local-only Watch Later & Playlists version.
+  - Set API_KEY to enable YouTube search/trending (optional).
+  - Set CLIENT_ID to use Google Sign-In for profile only (optional).
+*/
+
+const CLIENT_ID = "922335741761-2uhalf4tckq8ji1u8e74nhkkn7teocse.apps.googleusercontent.com"; // optional: replace with yours
+const API_KEY = "AIzaSyD88mpF5WWBySOGUplvgnGxPD3xXAcjp4I"; // optional: put your YouTube Data API v3 key if you want search/trending to work
+
+// blocked lists (kept from your code)
+const blockedWords = ["brainrots","skibidi","skibidi toilet","Dandy's World","steal a brainrot",];
+const blockedChannels = ["Brainrot Space","jandel","sammy","Milo and Chip","Mikey Maizen - Minecraft","AI Dreamer"];
+
+function isBlocked(title, channel){
+  const t = (title||"").toLowerCase();
+  const c = (channel||"").toLowerCase();
+  if (blockedWords.some(w => w && t.includes(w.toLowerCase()))) return true;
+  if (blockedChannels.some(ch => ch && c.includes(ch.toLowerCase()))) return true;
+  return false;
+}
+
+/* UI refs */
+const trendingGrid = document.getElementById('trendingGrid');
+const searchGrid = document.getElementById('searchGrid');
+const watchLaterGrid = document.getElementById('watchLaterGrid');
+const playlistsGrid = document.getElementById('playlistsGrid');
+const searchInput = document.getElementById('globalSearch');
+
+let watchLater = JSON.parse(localStorage.getItem('watchLater') || '[]');
+let playlists = JSON.parse(localStorage.getItem('playlists') || '[]');
+
+function saveLocal(){
+  localStorage.setItem('watchLater', JSON.stringify(watchLater));
+  localStorage.setItem('playlists', JSON.stringify(playlists));
+}
+
+/* render generic grid */
+function render(grid, videos){
+  grid.innerHTML = '';
+  if(!videos || videos.length === 0){
+    grid.innerHTML = '<p style="color:var(--muted);text-align:center;">No results</p>';
+    return;
+  }
+  videos.forEach(v => {
+    const inWL = watchLater.some(w => w.id === v.id);
+    const card = document.createElement('article');
+    card.className = 'card';
+    // keep title safe
+    const safeTitle = escapeHTML(v.title || '');
+    const channel = v.channel || '';
+    card.innerHTML = `
+      <div class="thumb"><img src="${v.thumb}" alt="${safeTitle}"></div>
+      <div class="meta">
+        <div style="flex:1;">
+          <h4 class="title">${safeTitle}</h4>
+          <div class="subtitle">${escapeHTML(channel)}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;">
+          <button class="play" data-id="${v.id}" data-title="${safeTitle}">Play</button>
+          ${grid !== watchLaterGrid ? `<button class="watchLaterBtn" data-id="${v.id}" data-title="${safeTitle}">${inWL ? 'Remove' : 'Watch Later'}</button>` : `<button class="removeBtn" data-id="${v.id}">Remove</button>`}
+          ${grid !== playlistsGrid ? `<button class="playlistBtn" data-id="${v.id}" data-title="${safeTitle}">+ Playlist</button>` : ''}
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // wire up events
+  grid.querySelectorAll('.play').forEach(btn => btn.addEventListener('click', e => {
+    const id = e.currentTarget.dataset.id;
+    const title = e.currentTarget.dataset.title;
+    document.getElementById('playerTitle').textContent = title;
+    document.getElementById('playerFrame').src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+    document.getElementById('modal').classList.add('open');
+  }));
+
+  grid.querySelectorAll('.watchLaterBtn').forEach(btn => btn.addEventListener('click', e => {
+    const id = e.currentTarget.dataset.id;
+    const title = e.currentTarget.dataset.title;
+    const idx = watchLater.findIndex(w => w.id === id);
+    if(idx >= 0){
+      // remove
+      watchLater.splice(idx,1);
+      e.currentTarget.textContent = 'Watch Later';
+    } else {
+      watchLater.push({id, title});
+      e.currentTarget.textContent = 'Remove';
+    }
+    saveLocal();
+    render(watchLaterGrid, watchLater);
+  }));
+
+  grid.querySelectorAll('.removeBtn').forEach(btn => btn.addEventListener('click', e => {
+    const id = e.currentTarget.dataset.id;
+    watchLater = watchLater.filter(w => w.id !== id);
+    saveLocal();
+    render(watchLaterGrid, watchLater);
+  }));
+
+  grid.querySelectorAll('.playlistBtn').forEach(btn => btn.addEventListener('click', e => {
+    const id = e.currentTarget.dataset.id;
+    const title = e.currentTarget.dataset.title;
+    const name = prompt('Enter playlist name:');
+    if(!name) return;
+    let pl = playlists.find(p => p.name === name);
+    if(!pl){
+      playlists.push({name, videos:[{id,title}]});
+    } else {
+      if(!pl.videos.some(v => v.id === id)) pl.videos.push({id,title});
+    }
+    saveLocal();
+    renderPlaylists();
+    alert(`Added to playlist "${name}"`);
+  }));
+}
+
+/* render playlists */
+function renderPlaylists(){
+  playlistsGrid.innerHTML = '';
+  if(!playlists || playlists.length === 0){
+    playlistsGrid.innerHTML = '<p style="color:var(--muted);text-align:center;">No playlists</p>';
+    return;
+  }
+  playlists.forEach(pl => {
+    const section = document.createElement('div');
+    section.innerHTML = `<h4 style="color:#fff;">${escapeHTML(pl.name)}</h4>`;
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+    pl.videos.forEach(v => {
+      const card = document.createElement('article');
+      card.className = 'card';
+      const safeTitle = escapeHTML(v.title || '');
+      card.innerHTML = `
+        <div class="thumb"><img src="${v.thumb || `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}" alt="${safeTitle}"></div>
+        <div class="meta">
+          <div style="flex:1;"><h4 class="title">${safeTitle}</h4></div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;">
+            <button class="play" data-id="${v.id}" data-title="${safeTitle}">Play</button>
+            <button class="removeFromPlaylistBtn" data-id="${v.id}" data-pl="${escapeHTML(pl.name)}">Remove</button>
+          </div>
+        </div>`;
+      grid.appendChild(card);
+    });
+    section.appendChild(grid);
+    playlistsGrid.appendChild(section);
+
+    section.querySelectorAll('.play').forEach(btn => btn.addEventListener('click', e => {
+      const id = e.currentTarget.dataset.id;
+      const title = e.currentTarget.dataset.title;
+      document.getElementById('playerTitle').textContent = title;
+      document.getElementById('playerFrame').src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+      document.getElementById('modal').classList.add('open');
+    }));
+
+    section.querySelectorAll('.removeFromPlaylistBtn').forEach(btn => btn.addEventListener('click', e => {
+      const id = e.currentTarget.dataset.id;
+      const plName = e.currentTarget.dataset.pl;
+      const p = playlists.find(x => x.name === plName);
+      if(p){
+        p.videos = p.videos.filter(v => v.id !== id);
+        if(p.videos.length === 0) playlists = playlists.filter(x => x.name !== plName);
+        saveLocal();
+        renderPlaylists();
+      }
+    }));
+  });
+}
+
+/* helpers */
+function escapeHTML(s){ return String(s).replace(/[&<>\"']/g,c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+/* modal close */
+document.getElementById('closeModal').addEventListener('click', () => {
+  document.getElementById('playerFrame').src = '';
+  document.getElementById('modal').classList.remove('open');
+});
+
+/* Fetch YouTube API (if API_KEY provided) */
+async function fetchYouTube(url){
+  try{
+    const res = await fetch(url);
+    const data = await res.json();
+    if(!data.items) return [];
+    const mapped = data.items.map(item => {
+      // handle different shapes returned by search vs videos endpoints
+      const id = item.id && (item.id.videoId || item.id);
+      const snippet = item.snippet || {};
+      return {
+        id,
+        title: snippet.title || '',
+        thumb: (snippet.thumbnails && snippet.thumbnails.high && snippet.thumbnails.high.url) || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+        channel: snippet.channelTitle || ''
+      };
+    });
+    return mapped.filter(v => !isBlocked(v.title, v.channel));
+  } catch(err){
+    console.error('YouTube fetch error', err);
+    return [];
+  }
+}
+
+async function loadTrending(){
+  if(!API_KEY){
+    trendingGrid.innerHTML = '<p style="color:var(--muted);text-align:center;">Trending disabled (API_KEY not set)</p>';
+    return;
+  }
+  const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=12&regionCode=US&key=${API_KEY}`;
+  const videos = await fetchYouTube(url);
+  render(trendingGrid, videos);
+}
+
+async function searchVideos(){
+  const q = searchInput.value.trim();
+  if(!q) return;
+  if(!API_KEY){
+    searchGrid.innerHTML = '<p style="color:var(--muted);text-align:center;">Search disabled (API_KEY not set)</p>';
+    return;
+  }
+  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=12&q=${encodeURIComponent(q)}&key=${API_KEY}`;
+  const videos = await fetchYouTube(url);
+  render(searchGrid, videos);
+}
+
+/* menu wiring */
+document.getElementById('searchBtn').addEventListener('click', searchVideos);
+searchInput.addEventListener('keydown', e => { if(e.key === 'Enter') searchVideos(); });
+document.getElementById('homeLink').addEventListener('click', loadTrending);
+document.getElementById('trendingLink').addEventListener('click', loadTrending);
+document.getElementById('watchLaterLink').addEventListener('click', () => render(watchLaterGrid, watchLater));
+document.getElementById('playlistsLink').addEventListener('click', renderPlaylists);
+
+/* Initial render */
+loadTrending();
+render(watchLaterGrid, watchLater);
+renderPlaylists();
+
+/* ---------------------------
+   Google Sign-In (profile only)
+   --------------------------- */
+
+const gsiContainer = document.getElementById('gsiButtonContainer');
+const userInfoEl = document.getElementById('userInfo');
+
+function handleCredentialResponse(response){
+  try{
+    const profile = jwt_decode(response.credential); // {name, picture, email, ...}
+    // show profile UI
+    document.getElementById('userName').textContent = profile.name || profile.email || 'User';
+    document.getElementById('userPic').src = profile.picture || '';
+    userInfoEl.style.display = 'flex';
+    gsiContainer.style.display = 'none';
+    // persist to session storage (optional)
+    sessionStorage.setItem('gt_profile', JSON.stringify(profile));
+  } catch(e){
+    console.error('failed to decode credential', e);
+  }
+}
+
+function initGSI(){
+  // render GSI button and prompt if client id available
+  if(typeof google === 'undefined' || !google.accounts || !google.accounts.id){
+    console.warn('Google Identity Services not loaded');
+    return;
+  }
+  // If CLIENT_ID is empty, we don't render the official button but keep a simple fallback
+  if(!CLIENT_ID || CLIENT_ID.trim().length === 0){
+    const btn = document.createElement('button');
+    btn.className = 'btn';
+    btn.textContent = 'Sign in (no CLIENT_ID)';
+    btn.disabled = true;
+    gsiContainer.appendChild(btn);
+    return;
+  }
+
+  google.accounts.id.initialize({
+    client_id: CLIENT_ID,
+    callback: handleCredentialResponse,
+    ux_mode: 'popup'
+  });
+
+  // render the GSI button
+  google.accounts.id.renderButton(
+    gsiContainer,
+    { theme: 'outline', size: 'large', width: 180 }
+  );
+
+  // auto prompt (optional)
+  // google.accounts.id.prompt(); // commented to avoid intrusive prompt
+}
+
+// restore profile from session if present
+(function restoreProfile(){
+  const s = sessionStorage.getItem('gt_profile');
+  if(s){
+    try{
+      const p = JSON.parse(s);
+      document.getElementById('userName').textContent = p.name || p.email || 'User';
+      document.getElementById('userPic').src = p.picture || '';
+      userInfoEl.style.display = 'flex';
+      gsiContainer.style.display = 'none';
+    } catch(e){}
+  }
+})();
+
+document.getElementById('signOutBtn').addEventListener('click', () => {
+  // simple sign out: clear session and show button again
+  sessionStorage.removeItem('gt_profile');
+  userInfoEl.style.display = 'none';
+  gsiContainer.style.display = 'block';
+  // disable auto-select for GSI if available
+  if(window.google && google.accounts && google.accounts.id) google.accounts.id.disableAutoSelect();
+});
+
+/* init GSI once scripts are ready */
+window.addEventListener('load', () => {
+  // small delay to ensure google.accounts is available (external script async)
+  setTimeout(initGSI, 200);
+});
+</script>
 </body>
 </html>
